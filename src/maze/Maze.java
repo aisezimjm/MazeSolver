@@ -35,5 +35,45 @@ public class Maze {
         this.startCol = 1;
         this.endRow = rows - 2;
         this.endCol = cols - 2;
+    }public void generateMaze() {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            visited[i][j] = false;
+        }
     }
+
+    generateMazeRecursive(startRow, startCol);
+
+    grid[startRow][startCol] = START;
+    grid[endRow][endCol] = END;
+}
+
+private void generateMazeRecursive(int row, int col) {
+    grid[row][col] = PATH;
+    visited[row][col] = true;
+
+    int[][] directions = {{-2, 0}, {0, 2}, {2, 0}, {0, -2}};
+
+    for (int i = directions.length - 1; i > 0; i--) {
+        int index = (int)(Math.random() * (i + 1));
+        int[] temp = directions[index];
+        directions[index] = directions[i];
+        directions[i] = temp;
+    }
+
+    for (int[] dir : directions) {
+        int newRow = row + dir[0];
+        int newCol = col + dir[1];
+
+        if (isValidCell(newRow, newCol) && !visited[newRow][newCol]) {
+            grid[row + dir[0]/2][col + dir[1]/2] = PATH;
+            generateMazeRecursive(newRow, newCol);
+        }
+    }
+}
+
+private boolean isValidCell(int row, int col) {
+    return row > 0 && row < rows - 1 && col > 0 && col < cols - 1;
+}
+
 }
