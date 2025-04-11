@@ -75,5 +75,41 @@ private void generateMazeRecursive(int row, int col) {
 private boolean isValidCell(int row, int col) {
     return row > 0 && row < rows - 1 && col > 0 && col < cols - 1;
 }
+public void printMaze() {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            System.out.print(grid[i][j]);
+        }
+        System.out.println();
+    }
+}
+
+public char[][] getGrid() {
+    return grid;
+}
+
+public int getStartRow() {
+    return startRow;
+}
+
+public int getStartCol() {
+    return startCol;
+}
+
+public int getEndRow() {
+    return endRow;
+}
+
+public int getEndCol() {
+    return endCol;
+}
+
+public int getRows() {
+    return rows;
+}
+
+public int getCols() {
+    return cols;
+}
 
 }
