@@ -21,4 +21,30 @@ public class MazeSolver {
 
         return solveMazeRecursive(maze.getStartRow(), maze.getStartCol());
     }
+    private boolean solveMazeRecursive(int row, int col) {
+    if (row == maze.getEndRow() && col == maze.getEndCol()) {
+        solutionFound = true;
+        return true;
+    }
+
+    if (!isValidMove(row, col)) {
+        return false;
+    }
+
+    visited[row][col] = true;
+
+    for (int[] dir : DIRECTIONS) {
+        int newRow = row + dir[0];
+        int newCol = col + dir[1];
+
+        if (solveMazeRecursive(newRow, newCol)) {
+            if (maze.getGrid()[row][col] != Maze.START && maze.getGrid()[row][col] != Maze.END) {
+                maze.getGrid()[row][col] = Maze.SOLUTION;
+            }
+            return true;
+        }
+    }
+
+    return false;
+}
 }
