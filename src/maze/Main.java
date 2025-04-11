@@ -28,4 +28,26 @@ public class Main {
 
         return value;
     }
+    private static void createAndSolveMaze(int rows, int cols) {
+        // Create maze
+        System.out.println("\nCreating " + rows + "x" + cols + " maze...");
+        Maze maze = new Maze(rows, cols);
+
+        // Generate maze
+        System.out.println("Generating maze...");
+        maze.generateMaze();
+
+        // Print initial maze
+        System.out.println("\nInitial Maze:");
+        maze.printMaze();
+
+        // Solve maze
+        System.out.println("\nSolving maze...");
+        MazeSolver solver = new MazeSolver(maze);
+        solver.solveMaze();
+
+        // Print solution
+        System.out.println("\nSolution:");
+        solver.printSolution();
+    }
 }
