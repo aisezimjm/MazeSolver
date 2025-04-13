@@ -10,8 +10,8 @@ public class Main {
             int rows = getDimension(scanner, "rows");
             int cols = getDimension(scanner, "columns");
 
-            // Placeholder for future logic
             System.out.println("You selected a maze of size " + rows + "x" + cols);
+            createAndSolveMaze(rows, cols);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }

@@ -48,12 +48,12 @@ public class MazeSolver {
     return false;
 }
 private boolean isValidMove(int row, int col) {
-    if (row < 0  row >= maze.getRows()  col < 0 || col >= maze.getCols()) {
+    if (row < 0 || row >= maze.getRows() || col < 0 || col >= maze.getCols()) {
         return false;
     }
 
     char cell = maze.getGrid()[row][col];
-    return (cell == Maze.PATH  cell == Maze.START  cell == Maze.END) && !visited[row][col];
+    return (cell == Maze.PATH || cell == Maze.START || cell == Maze.END) && !visited[row][col];
 }
 
 public void printSolution() {
